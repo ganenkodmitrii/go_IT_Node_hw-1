@@ -1,0 +1,25 @@
+{
+  "name": "go_IT_Node_hw-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganenkodmitrii/go_IT_Node_hw-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganenkodmitrii/go_IT_Node_hw-1/issues"
+  },
+  "homepage": "https://github.com/ganenkodmitrii/go_IT_Node_hw-1#readme",
+  "dependencies": {
+    "commander": "9.0.0"
+  }
+}
