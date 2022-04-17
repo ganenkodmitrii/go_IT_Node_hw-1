@@ -16,18 +16,15 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      const contacts = api.listContacts();
-      console.table(contacts);
+      api.listContacts();
       break;
 
     case "get":
-      const contact = api.getContactById(id);
-      console.table(contact);
+      api.getContactById(id);
       break;
 
     case "search":
-      const contactByName = api.searchContact(name);
-      console.table(contactByName);
+      api.searchContact(name);
       break;
 
     case "add":
