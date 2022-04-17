@@ -1,40 +1,45 @@
-const { Command } = require('commander')
-const api = require('./api/contacts')
+const { Command } = require("commander");
+const api = require("./api/contacts");
 
-const program = new Command()
+const program = new Command();
 program
-  .option('-a, --action <type>', 'choose action')
-  .option('-i, --id <type>', 'user id')
-  .option('-n, --name <type>', 'user name')
-  .option('-e, --email <type>', 'user email')
-  .option('-p, --phone <type>', 'user phone')
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
 
-program.parse(process.argv)
+program.parse(process.argv);
 
-const argv = program.opts()
-async function invokeAction({ action, id, name, email, phone }) {
+const argv = program.opts();
+
+function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
-    case 'list':
-      const contacts = await api.listContacts()
-      console.table(contacts)
-      break
+    case "list":
+      api.listContacts();
+      break;
 
-    case 'get':
-      const contact = await api.getContactById(id)
-      console.table(contact)
-      break
+    case "get":
+      api.getContactById(id);
+      break;
 
-    case 'add':
-      api.addContact(name, email, phone)
-      break
+    case "search":
+      api.searchContact(name);
+      break;
 
-    case 'remove':
-      api.removeContact(id)
-      break
+    case "add":
+      api.addContact({ name, email, phone });
+      break;
+
+    case "remove":
+      api.removeContact(id);
+      break;
 
     default:
-      console.warn('\x1B[31m Unknown action type!')
+      console.warn("\x1B[31m Unknown action type!");
   }
 }
 
-invokeAction(argv)
+(async () => {
+  await invokeAction(argv);
+})();
